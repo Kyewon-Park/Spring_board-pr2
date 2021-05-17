@@ -6,13 +6,13 @@ import lombok.Data;
 public class Article {
     private Long id;
     private String articleName;
-    private String textBody;
+    private String articleBody;
 
     public Article() {
     }
 
     public Article(String articleName, String textBody) {
         this.articleName = articleName;
-        this.textBody = textBody;
+        this.articleBody = textBody;
     }
 }

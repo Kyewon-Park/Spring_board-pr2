@@ -30,7 +30,7 @@ public class ArticleRepository {
     public void updateArticle(Long id, Article updateTo){
         Article found = findById(id);
         found.setArticleName(updateTo.getArticleName());
-        found.setTextBody(updateTo.getTextBody());
+        found.setArticleBody(updateTo.getArticleBody());
     }
 
     public void clearStore(){
