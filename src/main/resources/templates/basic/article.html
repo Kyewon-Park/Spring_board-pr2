@@ -16,6 +16,7 @@
     <div class="py-5 text-center">
         <h2>글 상세</h2>
     </div>
+    <h2 th:if="${param.status}" th:text="'저장완료!'"></h2>
     <div>
         <label for="articleId">글 ID</label>
         <input type="text" id="articleId" name="articleId" class="form-control"

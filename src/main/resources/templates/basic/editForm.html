@@ -15,22 +15,22 @@
     <div class="py-5 text-center">
         <h2>글 수정 폼</h2>
     </div>
-    <form action="article.html" method="post">
+    <form action="article.html" th:action method="post">
         <div>
             <label for="id">글 ID</label>
             <input type="text" id="id" name="id" class="form-control" value="1"
-                   th:value="@{article.id}"
+                   th:value="${article.id}"
                    readonly>
         </div>
         <div>
             <label for="articleName">글 제목</label>
             <input type="text" id="articleName" name="articleName" class="form-control"
-                   value="상품A" th:value="@{article.articleName}">
+                   value="상품A" th:value="${article.articleName}">
         </div>
         <div>
             <label for="articleBody">본문 내용</label>
             <input type="text" id="articleBody" name="articleBody" class="form-control"
-                   value="10000" th:value="@{article.articleBody}">
+                   value="10000" th:value="${article.articleBody}">
         </div>
         <hr class="my-4">
         <div class="row">

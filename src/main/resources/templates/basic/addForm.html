@@ -1,8 +1,10 @@
 <!DOCTYPE HTML>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/bootstrap.min.css"
+          th:href="@{/css/bootstrap.min.css}"
+          rel="stylesheet">
     <style>
  .container {
  max-width: 560px;
@@ -15,14 +17,14 @@
         <h2>글 등록 폼</h2>
     </div>
     <h4 class="mb-3">글 입력</h4>
-    <form action="article.html" method="post">
+    <form action="article.html" th:action method="post">
         <div>
-            <label for="itemName">글 제목</label>
-            <input type="text" id="itemName" name="itemName" class="form-control" placeholder="제목을 입력하세요">
+            <label for="articleName">글 제목</label>
+            <input type="text" id="articleName" name="articleName" class="form-control" placeholder="제목을 입력하세요">
         </div>
         <div>
-            <label for="price">본문 내용</label>
-            <input type="text" id="price" name="price" class="form-control"
+            <label for="articleBody">본문 내용</label>
+            <input type="text" id="articleBody" name="articleBody" class="form-control"
                    placeholder="내용을 입력하세요">
         </div>
         <hr class="my-4">
@@ -33,7 +35,9 @@
             </div>
             <div class="col">
                 <button class="w-100 btn btn-secondary btn-lg"
-                        onclick="location.href='articles.html'" type="button">취소</button>
+                        onclick="location.href='articles.html'"
+                        th:onclick="|location.href='@{basic/articles}'|"
+                        type="button">취소</button>
             </div>
         </div>
     </form>
