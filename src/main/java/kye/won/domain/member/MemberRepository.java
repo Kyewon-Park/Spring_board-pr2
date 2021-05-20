@@ -9,16 +9,14 @@ import java.util.List;
 
 @Repository
 public class MemberRepository {
-    private final HashMap<Long,Member> store = new HashMap<>();
-    private static Long sequence = 0L;
+    private final HashMap<String,Member> store = new HashMap<>();
 
     public Member save(Member member){
-        member.setId(++sequence);
-        store.put(sequence, member);
+        store.put(member.getId(), member);
         return member;
     }
 
-    public Member findById(Long id){
+    public Member findById(String id){
         Member found = store.get(id);
         return found;
     }
@@ -27,10 +25,10 @@ public class MemberRepository {
         return new ArrayList<Member>(store.values());
     }
 
-    public Member updateMember(Long id, Member updateTo){
+    public Member updateMember(String id, Member updateTo){
         Member member = store.get(id);
-        member.setUsername(updateTo.getUsername());
         member.setPassword(updateTo.getPassword());
+        member.setUsername(updateTo.getUsername());
         return member;
     }
 

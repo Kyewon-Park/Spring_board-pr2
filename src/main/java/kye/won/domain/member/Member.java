@@ -4,15 +4,16 @@ import lombok.Data;
 
 @Data
 public class Member {
-    private Long id;
-    private String username;
+    private String id;
     private String password;
+    private String username;
 
     private Member() {
     }
 
-    public Member(String username, String password) {
-        this.username = username;
+    public Member(String id, String password, String username) {
+        this.id = id;
         this.password = password;
+        this.username = username;
     }
 }
