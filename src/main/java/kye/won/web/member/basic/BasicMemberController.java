@@ -4,6 +4,7 @@ import kye.won.domain.member.Member;
 import kye.won.domain.member.MemberRepository;
 import kye.won.web.LogInterceptor;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -11,13 +12,24 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.annotation.PostConstruct;
 import java.util.List;
 
+@Slf4j
 @Controller
 @RequestMapping("/account/members")
 @RequiredArgsConstructor
 public class BasicMemberController extends LogInterceptor {
     private final MemberRepository memberRepository;
+
+    @PostConstruct
+    private void initMember(){
+        log.info("post construct");
+        Member member1 = new Member("memb1", "pass1");
+        Member member2 = new Member("memb2", "pass2");
+        memberRepository.save(member1);
+        memberRepository.save(member2);
+    }
 
     //회원 목록
     @GetMapping
@@ -37,7 +49,7 @@ public class BasicMemberController extends LogInterceptor {
 
     //회원가입폼
     @GetMapping("/add")
-    public String memberForm(){
+    public String memberAddForm(){
         return "account/addMember";
     }
     @PostMapping("/add")
@@ -48,6 +60,18 @@ public class BasicMemberController extends LogInterceptor {
         return "redirect:/account/members/{memberId}";
     }
 
-
+    //회원 수정
+    @GetMapping("/{memberId}/edit")
+    public String memberEditForm(@PathVariable Long memberId, Model model){
+        Member found = memberRepository.findById(memberId);
+        model.addAttribute(found);
+        return "account/editMember";
+    }
+    @PostMapping("/{memberId}/edit")
+    public String memberEdit(@PathVariable Long memberId, @ModelAttribute Member member, RedirectAttributes redirectAttributes) {
+        memberRepository.updateMember(memberId, member);
+        redirectAttributes.addAttribute("status", true);
+        return "redirect:/account/members/{memberId}";
+    }
 
 }
