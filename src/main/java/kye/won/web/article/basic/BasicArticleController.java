@@ -1,7 +1,7 @@
 package kye.won.web.article.basic;
 
-import kye.won.domain.Article;
-import kye.won.domain.ArticleRepository;
+import kye.won.domain.article.Article;
+import kye.won.domain.article.ArticleRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

@@ -1,6 +1,7 @@
 package kye.won.domain;
 
-import org.assertj.core.api.Assertions;
+import kye.won.domain.article.Article;
+import kye.won.domain.article.ArticleRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.slf4j.LoggerFactory;
@@ -10,7 +11,6 @@ import org.slf4j.Logger;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class ArticleRepositoryTest {
 

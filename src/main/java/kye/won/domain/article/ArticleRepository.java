@@ -1,4 +1,4 @@
-package kye.won.domain;
+package kye.won.domain.article;
 
 import org.springframework.stereotype.Repository;
 
