@@ -36,6 +36,16 @@ public class BasicMemberController extends LogInterceptor {
     public String loginForm(){
         return "account/loginForm";
     }
+    @PostMapping("/login")
+    public String login(@RequestParam String id, @RequestParam String password, Model model){
+        Member found = memberRepository.findById(id);
+        if(found.getPassword().equals(password)){
+            model.addAttribute("member", found);
+            return "account/member";
+        } else{
+            return "account/loginFail";
+        }
+    }
 
     //회원가입폼
     @GetMapping("/add")
